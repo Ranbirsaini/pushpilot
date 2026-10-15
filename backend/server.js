@@ -70,8 +70,9 @@ const fs = require('fs');
 app.use('/api', apiRoutes);
 
 // Serve Flutter Web static build if present
-const webBuildPath = path.join(__dirname, '../build/web');
-if (fs.existsSync(webBuildPath)) {
+const candidatePaths = [path.join(__dirname, 'public'), path.join(__dirname, '../build/web')];
+const webBuildPath = candidatePaths.find(function(p) { return fs.existsSync(p); });
+if (webBuildPath) {
   app.use(express.static(webBuildPath));
 
   // SPA Fallback: serve index.html for all non-API web routes

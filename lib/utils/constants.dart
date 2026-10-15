@@ -12,12 +12,12 @@ class AppConstants {
       if (origin.isNotEmpty && !origin.startsWith('file://')) {
         // If testing on Flutter local debug port (not 5050), use backend port 5050
         if (origin.contains('localhost') && !origin.contains(':5050')) {
-          return 'http://localhost:5050/api';
+          return 'https://pushpilot.onrender.com/api';
         }
         return '$origin/api';
       }
     } catch (_) {}
-    return 'http://localhost:5050/api';
+    return 'https://pushpilot.onrender.com/api';
   }
 
   // Storage keys
