@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 5050;
 // Security HTTP headers
 app.use(
   helmet({
+    contentSecurityPolicy: false,
     crossOriginResourcePolicy: { policy: 'cross-origin' },
   })
 );
